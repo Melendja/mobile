@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Personal portfolio website for COP4813 Web Systems I, showcasing assignments and web development skills.">
+    <meta name="keywords" content="web development, portfolio, COP4813, assignments, resume">
+    <meta name="author" content="Jose Melendez">
+    <title>Your Name - Portfolio</title>
+    <link rel="stylesheet" href="C:\Users\chief\Desktop\Menu\styles.css">
+    <!-- Favicon for better mobile bookmarking -->
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <!-- Theme color for mobile browsers -->
+    <meta name="theme-color" content="#667eea">
+</head>
+<body>
+    <header>
+        <nav aria-label="Main navigation">
+            <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                ☰ Menu
+            </button>
+            <ul class="nav-menu">
+                <li>
+                    <a href="#classes">My Classes</a>
+                    <ul class="submenu">
+                        <li><a href="https://class.daytonastate.edu/d2l/home/487729" target="_blank" rel="noopener noreferrer">Web Systems I</a></li>
+                        <li><a href="https://class.daytonastate.edu/d2l/home/485745" target="_blank" rel="noopener noreferrer">Applied Database I</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#assignments">My Assignments</a>
+                    <ul class="submenu">
+                        <li><a href="https://melendja.github.io/contact-form/" target="_blank" rel="noopener noreferrer">Assignment 3</a></li>
+                        <li><a href="https://melendja.github.io/Damped_Harmonic_Oscillator_-Calculator/remixed-d092781a.html" target="_blank" rel="noopener noreferrer">Assignment 4</a></li>
+                        <li><a href="https://melendja.github.io/Canvas/spirograph_canvas.html" target="_blank" rel="noopener noreferrer">Assignment 5</a></li>
+                        <li><a href="https://melendja.github.io/NFL_Dashboard/NFL_Dashboard.html" target="_blank" rel="noopener noreferrer">Assignment 6</a></li>
+                        <li><a href="https://melendja.github.io/Drag-Drop/drag_drop_cards.html" target="_blank" rel="noopener noreferrer">Assignment 7</a></li>
+                        <li><a href="https://melendja.github.io/Animation/f35-animation-professional.html" target="_blank" rel="noopener noreferrer">Assignment 9</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#favorite-sites">My Favorite Sites</a>
+                    <ul class="submenu">
+                        <li><a href="https://www.windy.com/-Weather-radar-radar?radar,27.887,-82.512,5" target="_blank" rel="noopener noreferrer">Windy.com</a></li>
+                        <li><a href="https://flightaware.com/live/" target="_blank" rel="noopener noreferrer">FlightAware</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#programming-sites">Programming Sites</a>
+                    <ul class="submenu">
+                        <li><a href="https://www.w3schools.com" target="_blank" rel="noopener noreferrer">W3Schools</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    
+    <main>
+        <section id="about">
+            <h1>Welcome to My Portfolio</h1>
+            <p>This website is created for COP4813 Web Systems I to demonstrate my web development skills and showcase my assignments. It serves as a digital resume to highlight my abilities to potential employers.</p>
+            
+            <h2>About Me</h2>
+            <p>I am a student at Daytona State College, passionate about web development and database management. My goal is to build accessible, user-friendly websites that meet modern web standards. In this course, I am learning to create W3C-compliant and ADA-accessible web applications using HTML, CSS, and JavaScript.</p>
+            
+            <img src="https://raw.githubusercontent.com/Melendja/JMelend/main/VeteranImg.png" 
+                 alt="Image representing web development skills" 
+                 width="300" 
+                 height="200"
+                 loading="lazy">
+        </section>
+    </main>
+    
+    <footer>
+        <p>&copy; 2025 Jose A. Melendez. All rights reserved.</p>
+    </footer>
+    
+    <script>
+        // Mobile menu toggle functionality
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        menuToggle.addEventListener('click', function() {
+            const isExpanded = navMenu.classList.toggle('active');
+            // Update aria-expanded for accessibility
+            this.setAttribute('aria-expanded', isExpanded);
+        });
+        
+        // Close menu when clicking outside
+        document.addEventListener('click', function(event) {
+            const isClickInside = event.target.closest('nav');
+            if (!isClickInside && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+        
+        // Close menu when pressing Escape key
+        document.addEventListener('keydown', function(event) {
+            if (event.key === 'Escape' && navMenu.classList.contains('active')) {
+                navMenu.classList.remove('active');
+                menuToggle.setAttribute('aria-expanded', 'false');
+                menuToggle.focus();
+            }
+        });
+        
+        // Submenu toggle for mobile (tap to expand)
+        if (window.innerWidth <= 768) {
+            const menuItems = document.querySelectorAll('.nav-menu > li > a');
+            menuItems.forEach(item => {
+                item.addEventListener('click', function(e) {
+                    // Only prevent default if it has a submenu
+                    if (this.nextElementSibling && this.nextElementSibling.classList.contains('submenu')) {
+                        e.preventDefault();
+                        const submenu = this.nextElementSibling;
+                        // Toggle the submenu visibility
+                        if (submenu.style.maxHeight && submenu.style.maxHeight !== '0px') {
+                            submenu.style.maxHeight = '0px';
+                        } else {
+                            submenu.style.maxHeight = submenu.scrollHeight + 'px';
+                        }
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>
